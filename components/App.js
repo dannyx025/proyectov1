@@ -1,30 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
+import AppTitle from './AppTitle';
 
-export default function App() {
 
-  
-  return (
-    <>
+export default function App(props) {
+
+  const OpenScreen  = () => {
+
+    props.navigation.navigate('USUARIO');
+
+  }
+
+
+    return (
+    <View style={styles.mainView}>
     <StatusBar style="auto" />
-    <Image source={require('./images/LogoPrograma.png')} style={styles.LogoImage}></Image>
-    <View >
-      <Image source={require('./images/calle.png')} style={styles.titleBackground}></Image>
-        <Text style={styles.title}>
-        <Text style={styles.blueLetters}>R</Text>
-        <Text style={styles.blueLetters}>U</Text>
-        <Text style={styles.whiteLetters}>T</Text>
-        <Text style={styles.redLetters}>A</Text>
-        <Text style={styles.whiteLetters}>B</Text>
-        <Text style={styles.blueLetters}>U</Text>
-        <Text style={styles.blueLetters}>S</Text>
-        
-        </Text>
-    </View>
+    <Image source={require('../images/LogoPrograma.png')} style={styles.LogoImage}></Image>
+    <View style={styles.space}></View>
+     <AppTitle></AppTitle>
+    
+    
     <View style={styles.ButtonView}>
 
-    <TouchableOpacity style={styles.button} onClick={alert('Bienvenido')}>
+    <TouchableOpacity style={styles.button} onPress={OpenScreen}>
       <Text style={styles.buttonText} >USUARIO</Text>
     </TouchableOpacity>
     <TouchableOpacity style={[styles.button,styles.button2]} >
@@ -32,10 +31,10 @@ export default function App() {
     </TouchableOpacity>
     </View>
   <View style={styles.Footer}>
-<Image source={require('./images/Estadio.png')} style={styles.BottomImage}></Image>
+
   </View>
-    </>
-  );
+    </View>
+    );
 }
 
 
@@ -43,43 +42,35 @@ export default function App() {
 
 
 const styles = StyleSheet.create({
+  
+  space:{
+width: '100%',
+height: '5%',
+
+  },
+
+  mainView:{
+
+    width: '100%',
+    height:'100%',
+
+
+  },
+
   LogoImage: {
     
     flex:1,
     resizeMode: 'stretch',
     width: '100%',
-    maxHeight:'30%',
+    maxHeight:'40%',
     position:'relative',
     top:'0%',
     left:'0%',
 
 
   },
-  titleBackground:{
-    marginTop:'12%',
-    resizeMode: 'stretch',
-    maxWidth:'100%',
-    maxHeight:'40%',
 
-  },
- 
-  title:{
-    fontSize: 45,
-    position: 'relative',
-    textAlign: "center",
-    top: '-35%',
-    fontWeight:'bold',
-  },
-  blueLetters : {
-    color:'#0b4199',
-  },
-  redLetters : {
-    color:'#fe0000',
-  },
-  whiteLetters : {
-    color:'#ffffff',
-  },
-  //-----------------------------------------------------
+
 
  
   button : {
@@ -90,7 +81,7 @@ const styles = StyleSheet.create({
     position: 'relative',
  marginLeft: 'auto',
  marginRight: 'auto',
-top: '8%', 
+top: '25%', 
     borderRadius: 32,
     textAlign: 'center',
   
@@ -117,7 +108,7 @@ elevation: 14,
   
     button2: {
 
-top: '10%',
+top: '30%',
 
     },
     PressedButton:{
@@ -127,6 +118,7 @@ top: '10%',
 
     buttonText:{
 
+    
         flex: 1,
         marginLeft: 'auto',
         marginRight:'auto',
